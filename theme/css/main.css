@@ -464,3 +464,16 @@ li:last-child .hentry, #content > .hentry {border: 0; margin: 0;}
 
 	#add-comment input[type='submit'] {float: right; margin: 0 .5em;}
 	#add-comment * {margin-bottom: .5em;}
+
+/***** Additional for Grid Layout *****/
+
+    .grid-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr; /* Three equal-width columns */
+      grid-gap: 10px; /* Gap between grid items */
+    }
+    
+    .grid-item {
+      background-color: #ddd;
+      padding: 20px;
+      text-align: center;
