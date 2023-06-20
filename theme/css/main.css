@@ -468,7 +468,7 @@ li:last-child .hentry, #content > .hentry {border: 0; margin: 0;}
 
 /***** Additional for Grid Layout *****/
 /***** Additional for Grid Layout *****/
-
+/*
 .grid-container {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr; 
@@ -480,4 +480,17 @@ li:last-child .hentry, #content > .hentry {border: 0; margin: 0;}
       padding: 20px;
         text-align: center;
     }
+*/
+.grid-container {
+      display: -ms-grid;
+      display: grid;
+      -ms-grid-columns: 1fr 10px 1fr 10px 1fr;
+      grid-template-columns: 1fr 1fr 1fr; 
+      grid-gap: 10px; 
+    }
 
+.grid-item {
+      background-color: #ddd;
+      padding: 20px;
+        text-align: center;
+    }
