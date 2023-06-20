@@ -469,13 +469,13 @@ li:last-child .hentry, #content > .hentry {border: 0; margin: 0;}
 /***** Additional for Grid Layout *****/
 /***** Additional for Grid Layout *****/
 
-grid-container {
+.grid-container {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr; 
       grid-gap: 10px; 
     }
 
-grid-item {
+.grid-item {
       background-color: #ddd;
       padding: 20px;
         text-align: center;
