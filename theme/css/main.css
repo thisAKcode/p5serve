@@ -467,21 +467,8 @@ li:last-child .hentry, #content > .hentry {border: 0; margin: 0;}
 
 
 /***** Additional for Grid Layout *****/
-
-.grid-container {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr; /* Three equal-width columns */
-      grid-gap: 10px; /* Gap between grid items */
-    }
-    
-.grid-item {
-      background-color: #ddd;
-      padding: 20px;
-        text-align: center;
-    }
-
 /***** Additional for Grid Layout *****/
-/*
+
 grid-container {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr; 
@@ -494,4 +481,3 @@ grid-item {
         text-align: center;
     }
 
-*/
