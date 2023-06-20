@@ -2,7 +2,7 @@ let img; // Declare variable 'img'.
 
 function setup() {
   createCanvas(720, 400);
-  img = loadImage('assets/image_1.jpg');
+  img = loadImage('./assets/image_1.jpg');
   //img = loadImage('https://images.unsplash.com/photo-1489389944381-3471b5b30f04?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8b3BlbiUyMHNvdXJjZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60'); // Load the image
 }
 
