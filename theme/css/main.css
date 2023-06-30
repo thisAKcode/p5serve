@@ -481,40 +481,17 @@ li:last-child .hentry, #content > .hentry {border: 0; margin: 0;}
         text-align: center;
     }
 */
-.grid-container {
-      display: -ms-grid;
-      display: grid;
-      -ms-grid-columns: 1fr 10px 1fr 10px 1fr;
-      grid-template-columns: 1fr 1fr 1fr; 
-      grid-gap: 10px; 
-    }
 
-.grid-item {
-      background-color: #ddd;
-      padding: 20px;
-        text-align: center;
-    }
 
-* {
-  box-sizing: border-box;
-}
-.container {
-  max-width: 800px;
-  margin: 0 auto;
-	display: grid;
-	grid-template-columns: repeat(4, 1fr);
-	grid-auto-rows: 1fr;
-  grid-column-gap: 30px;
-  grid-row-gap: 30px;
+        /* CSS styles for grid layout */
+        .container {
+            display: grid;
+            grid-template-columns: repeat(3, 3fr); /* Three equal columns */
+            grid-gap: 10px; /* Gap between grid items */
+        }
 
-  }
-.description {
-  background: blue;
-  grid-column: 1 / span 4;
-
-  }
-.col {
-  background: red;
-
-  
-}
+        .item {
+            background-color: #ccc;
+            padding: 20px;
+            text-align: center;
+        }
