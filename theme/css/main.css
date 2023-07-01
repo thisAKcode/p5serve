@@ -483,14 +483,13 @@ li:last-child .hentry, #content > .hentry {border: 0; margin: 0;}
 */
 
 
-        /* CSS styles for grid layout */
-        .container {
+        #container {
             display: grid;
             grid-template-columns: repeat(3, 3fr); /* Three equal columns */
             grid-gap: 10px; /* Gap between grid items */
         }
 
-        .item {
+        #item {
             background-color: #ccc;
             padding: 20px;
             text-align: center;
