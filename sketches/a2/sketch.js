@@ -3,7 +3,8 @@ let img; // Declare variable 'img'.
 function setup() {
   createCanvas(720, 400);
   //C:\p5serve\sketches\a2
-  img = loadImage('../../images/image.jpg');
+  //img = loadImage('../../images/image.jpg');
+  img = loadImage('https://raw.githubusercontent.com/thisAKcode/p5serve/master/sketches/a2/images/image.JPG'); 
   //img = loadImage('https://images.unsplash.com/photo-1489389944381-3471b5b30f04?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8b3BlbiUyMHNvdXJjZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60'); // Load the image
 }
 
