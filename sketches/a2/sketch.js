@@ -20,7 +20,7 @@ function setup() {
     console.log('local file')
   //  block of code to be executed if the condition is true
   } else {
-    pathCheck = 'https://raw.githubusercontent.com/thisAKcode/p5serve/master/sketches/${projName}/images/image.JPG'; // message = `Hello, ${name}! You are ${age} years old.`;
+    pathCheck = `https://raw.githubusercontent.com/thisAKcode/p5serve/master/sketches/${projName}/images/image.JPG`; // message = `Hello, ${name}! You are ${age} years old.`;
   //  block of code to be executed if the condition is false
   }
   pathCheck = imgPathChecker()
