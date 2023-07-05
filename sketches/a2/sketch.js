@@ -6,7 +6,7 @@ function imgPathChecker() {
   if (window.location.href == 'http://localhost:8000/') {
     pathCheck = 'images/image.JPG';
   } else {
-    pathCheck = 'https://raw.githubusercontent.com/thisAKcode/p5serve/master/sketches/${projName}/images/image.JPG'; // message = `Hello, ${name}! You are ${age} years old.`;
+    pathCheck = `https://raw.githubusercontent.com/thisAKcode/p5serve/master/sketches/${projName}/images/image.JPG`; // message = `Hello, ${name}! You are ${age} years old.`;
   }
   return pathCheck 
 }
