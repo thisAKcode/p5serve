@@ -2,37 +2,75 @@ let img; // Declare variable 'img'.
 let projName = 'a2';
 let pathCheck;
 
+
+function addDescription(){ 
+      // Add description text
+      let description = "This sketch simply displays the image at original size and at point (0, height/2) at half size"
+      const fontSize = 12;
+      textFont('monospace', fontSize);
+      const lineHeight = fontSize * 1.2;
+      const margin = 10; // Margin between lines and edges
+      
+      const maxTextWidth = width - margin * 2; // Maximum text width
+      const words = description.split(' '); // Split description into words
+      
+      let line = '';
+      const lines = [];
+      
+      // Split the description into lines
+      for (let i = 0; i < words.length; i++) {
+        const word = words[i];
+        const testLine = line + word + ' ';
+        const testWidth = textWidth(testLine);
+        
+        if (testWidth > maxTextWidth && i > 0) {
+          lines.push(line);
+          line = word + ' ';
+        } else {
+          line = testLine;
+        }
+      }
+      lines.push(line);
+      
+      const yPos = height - margin - lines.length * lineHeight;
+    
+      textAlign(LEFT, BOTTOM);
+      textSize(fontSize);
+      fill(0, 102, 153);
+      for (let i = 0; i < lines.length; i++) {
+        const lineText = lines[i];
+        const xPos = margin;
+        const yPosLine = yPos + (i + 1) * lineHeight;
+        
+        text(lineText, xPos, yPosLine);
+      }
+}
+
 function imgPathChecker() {
   if (window.location.href == 'http://localhost:8000/') {
-    pathCheck = 'images/image.JPG';
+    pathCheck = 'assets/image.JPG';
   } else {
-    pathCheck = `https://raw.githubusercontent.com/thisAKcode/p5serve/master/sketches/${projName}/images/image.JPG`; // message = `Hello, ${name}! You are ${age} years old.`;
+    pathCheck = `https://raw.githubusercontent.com/thisAKcode/p5serve/master/sketches/${projName}/assets/image.JPG`;
   }
-  return pathCheck 
+  return pathCheck;
+}
+
+function preload() {
+  // preload() runs once
+  img = loadImage(imgPathChecker());
 }
 
 function setup() {
   createCanvas(720, 400);
-  //C:\p5serve\sketches\a2
-  //console.log(process.cwd())
-  let pathCheck = 'images/image.JPG';
-  if (window.location.href == 'http://localhost:8000/') {
-    console.log('local file')
-  //  block of code to be executed if the condition is true
-  } else {
-    pathCheck = `https://raw.githubusercontent.com/thisAKcode/p5serve/master/sketches/${projName}/images/image.JPG`; // message = `Hello, ${name}! You are ${age} years old.`;
-  //  block of code to be executed if the condition is false
-  }
-  pathCheck = imgPathChecker()
-  console.log('here I am',window.location.href);
-  img = loadImage(pathCheck);
-  //img = loadImage('https://raw.githubusercontent.com/thisAKcode/p5serve/master/sketches/a2/images/image.JPG'); 
-  //img = loadImage('https://images.unsplash.com/photo-1489389944381-3471b5b30f04?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8b3BlbiUyMHNvdXJjZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60'); // Load the image
+  // img.loadPixels()
+  // pathCheck = imgPathChecker();
+  //console.log('here is the path',window.location.href);
 }
 
 function draw() {
-  // Displays the image at its actual size at point (0,0)
+  // Displays the image
   image(img, 0, 0);
   // Displays the image at point (0, height/2) at half size
   image(img, 0, height / 2, img.width / 2, img.height / 2);
+  addDescription();
 }
