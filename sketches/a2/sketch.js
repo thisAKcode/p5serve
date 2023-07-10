@@ -1,11 +1,9 @@
 let img; // Declare variable 'img'.
 let projName = 'a2';
 let pathCheck;
-
+let description = "This sketch simply displays the image at original size and at point (0, height/2) at half size"
 
 function addDescription(){ 
-      // Add description text
-      let description = "This sketch simply displays the image at original size and at point (0, height/2) at half size"
       const fontSize = 12;
       textFont('monospace', fontSize);
       const lineHeight = fontSize * 1.2;
@@ -61,10 +59,8 @@ function preload() {
 }
 
 function setup() {
-  createCanvas(720, 400);
-  // img.loadPixels()
-  // pathCheck = imgPathChecker();
-  //console.log('here is the path',window.location.href);
+  createCanvas(720, 720);
+  background('black');
 }
 
 function draw() {
@@ -72,5 +68,6 @@ function draw() {
   image(img, 0, 0);
   // Displays the image at point (0, height/2) at half size
   image(img, 0, height / 2, img.width / 2, img.height / 2);
+    fill('black');
   addDescription();
 }

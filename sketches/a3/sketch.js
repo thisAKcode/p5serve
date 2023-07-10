@@ -1,4 +1,3 @@
-let img; // Declare variable 'img'.
 
 function setup() {
   createCanvas(400, 400);
