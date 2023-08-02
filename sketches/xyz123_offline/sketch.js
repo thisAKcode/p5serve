@@ -1,7 +1,7 @@
 let img; // Declare variable 'img'.
-let projName = 'a2';
+let projName = 'xyz123';
 let pathCheck;
-let description = "This sketch first displays the image with canvas width and height scaled proportionally. At point (0, height/2) image rendered half size and tinted blue."
+let description = "This sketch is a blueprint "
 
 function addDescription(){ 
       const fontSize = 12;
@@ -60,16 +60,12 @@ function preload() {
 
 function setup() {
   createCanvas(720, 720);
-  background('white');
-  noLoop();
+  background('black');
 }
 
 function draw() {
   // Displays the image
-  img.resize(720,0)
-  image(img, 0, 0);
+  image(img, 0, 0, 260, 390);
   // Displays the image at point (0, height/2) at half size
-  tint(0, 153, 204, 126); // Tint blue
-  image(img, 0, height / 2, img.width / 2, img.height / 2);
   addDescription();
 }

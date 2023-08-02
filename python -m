@@ -1,0 +1,5 @@
+import os
+
+my_directory = f'c/p5serve/sketches' 
+entries = os.listdir()
+print(entries)
