@@ -1,15 +1,40 @@
 import os
-import re
+import html_components # import constant_footer, constant_header
 
 
-file_path = 'C:/p5serve/stuff2.html' 
+names_to_skip = ['xyz123','xyz123_offline']
+file_path = 'C:/p5serve/index.html' 
+
 with open(file_path, 'r') as file:
     content = file.read()
-pattern = r'<div id="container">.*?</div><br>'
-match = re.search(pattern, content, re.DOTALL)
-extracted_block = match.group()
-print(extracted_block)
 
 my_directory = f'c:/p5serve/sketches' 
 entries = os.listdir(my_directory)
-print(entries)
+relevant_entries = [i for i in entries if not i in names_to_skip]
+
+links_to_index = '\n'.join([f'        <div id="item"><a href=".sketches/{i}/index.html</div>' 
+                            for i in relevant_entries
+                            ]
+                           )
+main_div = f'''
+<section id="content" class="body">
+    <div id="container">
+{links_to_index}
+    </div>
+</section>
+'''
+
+result_html_content = f'''
+{html_components.constant_header}
+{main_div}
+{html_components.constant_footer}
+'''
+
+# Define the file name you want to write to
+file_name = "sample.html"
+
+# Open the file in write mode and write the HTML content
+with open(file_name, "w") as file:
+    file.write(result_html_content)
+
+print(f"HTML content written to {file_name}")

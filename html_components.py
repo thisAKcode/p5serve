@@ -1,3 +1,5 @@
+
+constant_header = '''
 <!DOCTYPE html>
 
 <html lang="en">
@@ -110,20 +112,8 @@ body {
                     <li><a href="/p5serve/index.html">p5.js Sketches</a></li>
                 </ul></nav>
         </header><!-- /#banner -->
-
-<section id="content" class="body">
-  
-    <div id="container">
-        <div id="item">a</div>
-        <div id="item">b Item 1</div>
-        <div id="item">c Item 1</div>
-        <div id="item">d Item 2</div>
-        <div id="item">e Item 3</div>
-        <div id="item">f Item 2</div>
-        <div id="item">g Item 3</div>
-        <div id="item">h Item 2</div>
-        <div id="item">i Item 3</div>
-    </div>
-</section>
+'''
+constant_footer = '''
 </body>
 </html>
+'''
