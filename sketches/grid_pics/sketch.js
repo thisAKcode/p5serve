@@ -1,10 +1,17 @@
-let img; // Declare variable 'img'.
+// i had hard times to follow along with docs regarding applying different filters to the same source 
+// picture. 
+// workaround was found here: 
+// https://discourse.processing.org/t/image-filter-gets-stronger-every-loop-p5-js/35641/4
+
+
+let imgIn, imgClone;
 let projName = 'grid_pics';
 let pathCheck;
 let description = "This sketch is a blueprint "
 let currentFilter = 0;
-let gridSize =5;
+let gridSize =4;
 let cellSize;
+let imgs = [];
 
 // JSON object to store the filters
 let filters = {
@@ -64,16 +71,28 @@ function imgPathChecker() {
 }
 
 function preload() {
-  // preload() runs once
-  img = loadImage(imgPathChecker());
+  imgIn = loadImage(imgPathChecker(), img => {
+    imgClone = img.get();
+    img.loadPixels();
+    imgClone.loadPixels();
+  });
+}
+function transferImage(src, tgt) {
+  tgt.pixels.set(src.pixels);
+  tgt.updatePixels();
+  return tgt;
 }
 
+function earlyBirdFilter(img) {
+  borderFilter(radialBlurFilter(darkCorners(sepiaFilter(img)))).updatePixels();
+  return img;
+}
 function setup() {
   createCanvas(720, 720);
-  background('black');
+  background('white');
   noLoop();
 }
-function applyFilter(img,x,y, filterIndex){
+function applyFilter(imgIn,x,y, filterIndex){
   // here we use a callback to display the image after loading
   //img.filter(BLUR,1);
   //image(img,x,y)
@@ -89,44 +108,66 @@ function applyFilter(img,x,y, filterIndex){
   }
 }
 
-function foo(img,x,y, filterIndex){
-      img.filter(BLUR,5);
-      image(img, x,y);
-}
-
-
+function foo(x,y){
+      loadImage(imgPathChecker(), imgIn2 => {
+      cellSize = width*0.7 / gridSize;
+      imgIn2.resize(cellSize,0)
+      currentFilter = (currentFilter+1) % 4;
+      console.log('currentmodulo',currentFilter)
+    
+      if (currentFilter === 0) {
+        imgIn2.filter(GRAY); // Apply grayscale filter
+      } else if (currentFilter=== 1) {
+        imgIn2.filter(THRESHOLD); // Apply threshold filter
+      } else if (currentFilter === 2) {
+        imgIn2.filter(INVERT); // Apply invert filter
+      } else {
+        imgIn2.filter(OPAQUE); // Apply opaque filter
+      }
+      image(imgIn2, x,y);
+      });
+    }
+/*
 function draw() {
   cellSize = width / gridSize;
-  // Displays the image
-  img.resize(cellSize,0)
-  //image(img, 0, 0);
+  imgIn.resize(cellSize,0)
   addDescription();
-  //let clone = Object.assign({}, img) // Copies user into clone
-  let clone = {...img}
-  //clone.resize(cellSize,0)
-  let index=0;
+  let counter = 0;
   for (let i = 0; i < gridSize; i++) {
     for (let j = 0; j < gridSize; j++) {
       let x = (j) * cellSize;
       let y = (i) * cellSize;
-      loadImage(imgPathChecker(), img2 => {
-      cellSize = width / gridSize;
-      img2.resize(cellSize,0)
-   
-      indx = index + 1;
-      console.log('indx',indx)
-      currentFilter = (currentFilter + 1) % 4;
-      console.log('currentmodulo',currentFilter)
-      foo(img2,x,y,indx)
-    });
-      //foo(img, x, y,indx)
-  //    applyFilter(img,x,y, currentFilter);
-
-      //img.filter(BLUR,1);
-      //image(img, x, y);
-      // Apply different filters to each cell
-    }
+      //foo(x,y)
+      counter += 1
+      image(imgIn,x,y) //.filter(GRAY);
+      console.log(counter)
+    };
   }
-  
+  }
+*/
+function borderFilter(img) {
+  // blah, blah, blah...
+  return img;
+}
 
+function sepiaFilter(img) {
+  // blah, blah, blah...
+  return img;
+}
+
+function darkCorners(img) {
+  // blah, blah, blah...
+  return img;
+}
+
+function radialBlurFilter(img) {
+  // blah, blah, blah...
+  return img;
+}
+function draw(){
+  background(125);
+  cellSize = width / gridSize;
+  imgIn.resize(cellSize,0)
+  image(transferImage(imgIn, imgClone), 0, 0);
+  image(earlyBirdFilter(imgClone), imgIn.width, 0);  
 }
