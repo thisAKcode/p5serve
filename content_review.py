@@ -12,7 +12,7 @@ my_directory = f'c:/p5serve/sketches'
 entries = os.listdir(my_directory)
 relevant_entries = [i for i in entries if not i in names_to_skip]
 
-links_to_index = '\n'.join([f'        <div id="item"><a href=".sketches/{i}/index.html"> {i}</a></div>' 
+links_to_index = '\n'.join([f'        <div id="item"><a href="sketches/{i}/index.html"> {i}</a></div>' 
                             for i in relevant_entries
                             ]
                            )
