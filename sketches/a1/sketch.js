@@ -71,5 +71,7 @@ function draw() {
     }
   }
   addDescription();
+  // Save the canvas as a PNG file
+  // saveCanvas('myCanvas.png', 'png');
     }
 

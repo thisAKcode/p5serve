@@ -31,7 +31,7 @@ result_html_content = f'''
 '''
 
 # Define the file name you want to write to
-file_name = "sample.html"
+file_name = "index.html"
 
 # Open the file in write mode and write the HTML content
 with open(file_name, "w") as file:
