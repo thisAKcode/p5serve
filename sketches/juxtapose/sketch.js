@@ -1,11 +1,3 @@
-let c0 = [[255, 0, 0],
-  [255, 165, 0],
-  [255,255,0],
-  [0,255,0],
-  [0,127,255],
-  [35, 48, 103],
-  [139,0,255]
-];
 var img1;
 var img2;
 
@@ -33,6 +25,49 @@ function preload() {
 }
 
 
+function addDescription(){ 
+  // Add description text
+  let description = "I load two images (they are static) and overlay them on top of each other... the second image is visible through the first image. "
+  const fontSize = 12;
+  textFont('monospace', fontSize);
+  const lineHeight = fontSize * 1.2;
+  const margin = 10; // Margin between lines and edges
+  
+  const maxTextWidth = width - margin * 2; // Maximum text width
+  const words = description.split(' '); // Split description into words
+  
+  let line = '';
+  const lines = [];
+  
+  // Split the description into lines
+  for (let i = 0; i < words.length; i++) {
+    const word = words[i];
+    const testLine = line + word + ' ';
+    const testWidth = textWidth(testLine);
+    
+    if (testWidth > maxTextWidth && i > 0) {
+      lines.push(line);
+      line = word + ' ';
+    } else {
+      line = testLine;
+    }
+  }
+  lines.push(line);
+  
+  const yPos = height - margin - lines.length * lineHeight;
+
+  textAlign(LEFT, BOTTOM);
+  textSize(fontSize);
+  fill('white');
+  
+for (let i = 0; i < lines.length; i++) {
+    const lineText = lines[i];
+    const xPos = margin;
+    const yPosLine = yPos + (i + 1) * lineHeight;
+    
+    text(lineText, xPos, yPosLine);
+  }
+}
 
 function setup() {
   let canvas = createCanvas(680, 720);
@@ -57,4 +92,11 @@ function draw() {
   img1.loadPixels();  // Load the image pixels
 
   // Draw the filtered image in the cell
+
+  addDescription();
+  // Save the canvas as a PNG file
+  // saveCanvas('myCanvas.png', 'png');
+  
 }
+
+
