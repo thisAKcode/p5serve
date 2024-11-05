@@ -29,6 +29,7 @@ function preload() {
     imgClone.loadPixels();
   });
 }
+
 function addDescription(){ 
       // Add description text
       let description = "in future I want make multicolor halftone. By now i modify gra image posted on wikipedia by Jörg Bittner Unna - Own work, CC BY-SA 4.0, https://commons.wikimedia.org/w/index.php?curid=109727478"
@@ -111,7 +112,7 @@ function draw() {
   noLoop();
   
   // Calculate cell dimensions
-  cellWidth = width / 2;  // Two columns: one for gray, one for posterized
+  cellWidth = width / 3;  // Two columns: one for gray, one for posterized
   cellHeight = height;    // Full height for each column
 
   
