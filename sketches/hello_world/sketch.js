@@ -3,23 +3,8 @@ let projName = 'hello_world';
 let pathCheck;
 let font; // Declare variable 'font'
 
-let description = "I wanted to distort texty, I do not know why."
+let description = "I wanted to distort text, I do not know why."
 
-
-// funktion to draw the letter X as polyline
-function drawLetterX(x, y, size) {
-  const points = font.textToPoints('X', x, y, size, {
-    sampleFactor: 0.1,
-    simplifyThreshold: 0
-  });
-  strokeWeight(1);
-  beginShape();
-  for (let i = 0; i < points.length; i++) {
-    const pt = points[i];
-    vertex(pt.x, pt.y);
-  }
-  endShape(CLOSE);
-}
 
 // is there a way to make some of the 
 // text parts saved as vector points 
@@ -34,14 +19,15 @@ function distortText(text, x, y) {
 
 function addDescription(){ 
       const fontSize = 12;
-      textFont('monospace', fontSize);
+      textFont('Courier New', fontSize);
+      //textFont('monospace', fontSize);
       const lineHeight = fontSize * 1.2;
       const margin = 10; // Margin between lines and edges
       
       const maxTextWidth = width - margin * 2; // Maximum text width
       const words = description.split(' '); // Split description into words
       
-      let line = 'foo';
+      let line = description;
       const lines = [];
       
       // Split the description into lines
@@ -101,7 +87,7 @@ function draw() {
   stroke(0);
   strokeWeight(10);
 
-  textSize(90);
+  textSize(120);
   textAlign(CENTER, CENTER);
 
   
@@ -109,7 +95,7 @@ function draw() {
   push();
   fill(0,0);
   stroke(0);
-  strokeWeight(15);
+  strokeWeight(12);
   strokeJoin(ROUND);
   drawingContext.setLineDash([1,1]);
   strokeCap(SQUARE);
@@ -154,7 +140,15 @@ for (let i = 0; i < points.length; i++) {
 endShape(CLOSE);
 }
 
+// Reset all font distortions
+resetMatrix();
+textSize(12);
+textAlign(LEFT, BASELINE);
+textStyle(NORMAL);
+drawingContext.setLineDash([]);
+strokeWeight(1);
+strokeJoin(MITER);
+strokeCap(SQUARE);
 
- drawLetterX(250, 250, 100) 
-
+addDescription();
 }
