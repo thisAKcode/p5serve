@@ -59,7 +59,10 @@ for (let i = 0; i < swedishLetters.length; i++) {
   let row = Math.floor(i / gridSize);
   let x = col * letterSize + letterSize / 2;
   let y = row * letterSize + letterSize / 2;
-  drawLetterX(x, y, letterSize * 1.8, swedishLetters[i]);
+  drawLetterX(x - letterSize * 0.45,
+               y + letterSize * 0.45, 
+               letterSize * 1.8, 
+               swedishLetters[i]);
 }
 }
 
