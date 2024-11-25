@@ -1,6 +1,6 @@
 
 let projName = 'diiv_stockholm';
-let filenames = ['diiv1.mp4', 'diiv2.mp4', 'diiv3.mp4', 'diiv4.mp4', 'diiv5.mp4', 'diiv6.mp4'];
+let filenames = ['diiv1.mp4', 'diiv2.mp4', 'diiv3.mp4', 'diiv4.mp4', 'diiv5.mp4'];
 let cloudVideo, starsVideo, staticVideo, humanVideo;
 let videos = [];
 let outsideVideos;
@@ -20,34 +20,15 @@ function imgPathChecker(_filename) {
   return pathCheck;
 }
 
-/*
-function preload() {
-   
-  for (let i = 0; i < filenames.length; i++) {
-    let pathn = imgPathChecker(filenames[i]);
-    videos.push(createVideo(pathn)); 
-  }
-}
-*/
-
-
 
 function setup() {
-  frameRate(10);
+  frameRate(5);
   createCanvas(600, 500);
-  /*
-  // TODO: Load videos
-  cloudVideo = createVideo(cloudPath);
-  starsVideo = createVideo(starsPath);
-  staticVideo = createVideo(staticPath);
-  humanVideo = createVideo(humanPath);
-  */
-
-  // TODO: Populate videos array
+  // Populate videos array
   videos = [];
   for (let i = 0; i < filenames.length; i++) {
     let pathn = imgPathChecker(filenames[i]);
-    
+    // Load videos 
     videos.push(createVideo(pathn)); 
   }
 
@@ -58,7 +39,7 @@ function setup() {
     videos[i].hide();
   }
   // TODO: Populate outsideVideos array
-  outsideVideos = [videos[1], videos[2], videos[3]]
+  outsideVideos = [videos[1], videos[2], videos[3],videos[4]];
 }
 
 function draw() {
@@ -67,8 +48,9 @@ function draw() {
   // Calculate the width and height for each "screen" in the grid
   let w = (width - margin * (numOfScreensWide + 1)) / numOfScreensWide;
   let h = (height - margin * (numOfScreensWide + 1)) / numOfScreensWide;
-  humanVideo = videos[0]; 
-  print('onyx',humanVideo); 
+
+  // Randomly select a video from the array
+  humanVideo = random(videos);
 
   // Create a 4x4 grid of screens with a margin of 20px
   for (let i = 0; i < numOfScreensWide; i++) { 
@@ -82,13 +64,13 @@ function draw() {
       fill(255);
       rect(x, y, w, h);
       
-      // TODO: Fill this "screen" with a video, according to its (i,j) position
-    // image(img, dx, dy, dWidth, dHeight, sx, sy, sWidth, sHeight);
-  let inTopLeft = i ===1 && j ===1;
-  let inBotLeft = i ===1 && j ===2;
-  let inTopRight = i === 2 && j===1;
-  let inBotRight = i === 2 && j===2;
-  
+      // Fill this center of a "screen" with a video, according to its (i,j) position
+      // image(img, dx, dy, dWidth, dHeight, sx, sy, sWidth, sHeight);
+      let inTopLeft = i ===1 && j ===1;
+      let inBotLeft = i ===1 && j ===2;
+      let inTopRight = i === 2 && j===1;
+      let inBotRight = i === 2 && j===2;
+    
   if (inTopLeft){
     image(humanVideo, x, y, w, h, 0, 0, humanVideo.width/2, humanVideo.height/2);
   } else if (inBotLeft){
@@ -105,5 +87,3 @@ function draw() {
     }
   }
 }
-
-// TODO: Make videos on the outside change when mouse is clicked
