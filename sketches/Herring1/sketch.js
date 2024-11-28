@@ -6,9 +6,9 @@ let palette2 = ["#90e0ef","#001219","#240046", "#edede9","#3a7ca5", "#33415c"];
 let description = "I wanted to make herringbone but ended up with zickzack pattern. Way it turned out. Herringbone will be the next time. ";
 //// create class Tile that can be of following parameters 
 // x, y, size, color, stroke, transparency, rotation, flipX, flipY
-
+let floorDenominator = Math.random() < 0.5 ? 2 : 3;
 // Create a grid of 4x4
-let gridSize = 6;
+let gridSize = 8;
 
 const buNodes = new Array();
 
@@ -42,10 +42,14 @@ function addDescription(){
       lines.push(line);
       
       const yPos = height - margin - lines.length * lineHeight;
-    
+      // Reset everything to get white text
+      resetMatrix();
+      fill('white');
+      //stroke('red');
+ 
       textAlign(LEFT, BOTTOM);
       textSize(fontSize);
-      fill(0, 102, 153);
+      //fill(0, 102, 153);
       
     for (let i = 0; i < lines.length; i++) {
         const lineText = lines[i];
@@ -66,7 +70,8 @@ function noOOPcreateZickzackPatternI(gridSize) {
       //let rowGroupCategory = (i % 2 === 0) ? 'even' : 'odd';
       
       let columnCategory = (j % 2 === 0) ? 'even': 'odd';
-      let rowGroupCategory = floor(i / 3) % 3;
+      let rowGroupCategory = floor(i / floorDenominator) % floorDenominator;
+      //let rowGroupCategory = floor(i / 2) % 2;
       x = j * tileSize+tileSize/2; 
       y = i * tileSize+tileSize/2 ;
       let _vector = createVector(x, y);
@@ -105,7 +110,7 @@ buNodes.forEach((node) => {
   
   line(node._vector.x+size/2, node._vector.y+size/2, endX, endY);
 
-  text('.', node._vector.x, node._vector.y);
+  text('+', node._vector.x, node._vector.y);
   //ellipse(this.x, this.y, gridSize/2, gridSize/2);
  // draw lines
  let nodeNum = buNodes.length;
@@ -121,15 +126,16 @@ buNodes.forEach((node) => {
         let condition3 = n.columnCategory === m.columnCategory;
         if (condition1 && condition2 && condition3) {
           line(n._vector.x, n._vector.y, m._vector.x, m._vector.y);
+          let endX = n._vector.x + size/4;
+          let endY = n._vector.y + size/4;
+          line(n._vector.x, n._vector.y, endX, endY);
+          line(n._vector.x+ size/4, n._vector.y+ size/4, m._vector.x+ size/4, m._vector.y+ size/4)
       }
       ;
     }
   }
 });
-// Reset everything to get white text
-resetMatrix();
-fill(0);
-stroke(255);
+
 addDescription();
 
 }
